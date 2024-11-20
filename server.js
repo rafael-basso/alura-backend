@@ -9,6 +9,13 @@ app.listen (port, () => {
     console.log(`Server running on ${port}`);
 });
 
+// const cats = [
+//     {id: 1, description: "desc-1", url: "https://placecats.com/300/200"},
+//     {id: 2, description: "desc-2", url: "https://placecats.com/300/200"},
+//     {id: 3, description: "desc-3", url: "https://placecats.com/300/200"},
+//     {id: 4, description: "desc-3", url: "https://placecats.com/300/200"},
+// ];
+
 // app.get("/cats", (req, res) => {
 //     res.status(200).json(cats);
 //     res.status(200).send("<h1>Projeto Alura</h1>");
