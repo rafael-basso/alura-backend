@@ -15,3 +15,7 @@ export async function getTodosPosts() {
 export async function getPostPorId(id) {
     return colecao.findOne({ _id: new ObjectId(`${id}`) });
 }
+
+export async function postNovoPost(novoPost) {
+    return colecao.insertOne(novoPost);
+}

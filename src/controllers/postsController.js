@@ -1,4 +1,5 @@
-import { getTodosPosts, getPostPorId } from "../models/postsModel.js";
+import { getTodosPosts, getPostPorId, postNovoPost } from "../models/postsModel.js";
+import fs from 'fs';
 
 export async function listarPosts(req, res) {
     const posts = await getTodosPosts();
@@ -25,5 +26,43 @@ export async function listarPostPorId(req, res) {
                 message: "Post not found."
             });
         }
+    }
+}
+
+export async function criarPost(req, res) {
+    const novoPost = req.body;
+    
+    try {
+        const postCriado = await postNovoPost(novoPost);
+        
+        return res.status(201).json(postCriado);
+    } catch (error) {
+        console.log(error.message);
+
+        return res.status(500).json({
+            status: res.statusCode,
+            message: "Erro na requisição"
+        });
+    }
+}
+
+export async function uploadImagem(req, res) {
+    const novoPost = {
+        description: "",
+        imgUrl: req.file.originalname,
+        alt: ""
+    };
+
+    try {
+        const postCriado = await postNovoPost(novoPost);
+        
+        // renomear nome do arquivo com o id retornado do banco, seguindo o caminho da pasta raiz
+        const imagemAtualizada = `uploads/${postCriado.insertedId}.png`
+        fs.renameSync(req.file.path, imagemAtualizada);
+        
+        res.status(201).json(postCriado);
+    } catch(erro) {
+        console.error(erro.message);
+        res.status(500).json({"Erro":"Falha na requisição"})
     }
 }
