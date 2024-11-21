@@ -1,4 +1,4 @@
-import { getTodosPosts, getPostPorId, postNovoPost } from "../models/postsModel.js";
+import { getTodosPosts, getPostPorId, postNovoPost, deletePost } from "../models/postsModel.js";
 import fs from 'fs';
 
 export async function listarPosts(req, res) {
@@ -65,4 +65,25 @@ export async function uploadImagem(req, res) {
         console.error(erro.message);
         res.status(500).json({"Erro":"Falha na requisição"})
     }
+}
+
+export async function deletarPost(req, res) {
+    const id = String(req.params.id);
+
+    try {
+        await deletePost(id);
+        
+        return res.status(200).json({
+                success: true,
+                message: "Post deletado com sucesso"
+        });
+    } catch (error) {
+        console.log(error.message);
+
+        return res.status(500).json({
+            status: res.statusCode,
+            message: "Erro ao deletar Post!"
+    });
+    }
+
 }

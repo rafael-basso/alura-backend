@@ -19,3 +19,7 @@ export async function getPostPorId(id) {
 export async function postNovoPost(novoPost) {
     return colecao.insertOne(novoPost);
 }
+
+export async function deletePost(idPost) {
+    return colecao.deleteOne({ _id: new ObjectId(`${idPost}`) });
+}
