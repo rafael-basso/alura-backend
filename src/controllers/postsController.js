@@ -1,4 +1,6 @@
-import { getTodosPosts, getPostPorId, postNovoPost, deletePost } from "../models/postsModel.js";
+import { ObjectId } from "mongodb";
+import { getTodosPosts, getPostPorId, postNovoPost, deletePost, putPost  } from "../models/postsModel.js";
+import gerarDescricaoComGemini from '../services/geminiService.js'
 import fs from 'fs';
 
 export async function listarPosts(req, res) {
@@ -86,4 +88,31 @@ export async function deletarPost(req, res) {
     });
     }
 
+}
+
+export async function atualizarPost(req, res) {
+    const id = req.params.id;
+    const urlImg = `http://localhost:3000/${id}.png`
+    
+    try {
+        const imgBuffer = fs.readFileSync(`uploads/${id}.png`);
+        const createDescripton = await gerarDescricaoComGemini(imgBuffer);
+
+        const novoPost = {
+            description: createDescripton,
+            imgUrl: urlImg,
+            alt: req.body.alt
+        }
+
+        const postAtualizado = await putPost(id, novoPost);
+        
+        return res.status(201).json(postAtualizado);
+    } catch (error) {
+        console.log(error.message);
+
+        return res.status(500).json({
+            status: res.statusCode,
+            message: "Erro na requisição"
+        });
+    }
 }

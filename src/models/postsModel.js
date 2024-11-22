@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { ObjectId } from 'mongodb';
 import dbConnect from '../config/config.js';
 
@@ -22,4 +23,10 @@ export async function postNovoPost(novoPost) {
 
 export async function deletePost(idPost) {
     return colecao.deleteOne({ _id: new ObjectId(`${idPost}`) });
+}
+
+export async function putPost(idPost, postAtualizado) {
+    const objId = ObjectId.createFromHexString(idPost);
+    
+    return colecao.updateOne({_id: new ObjectId(objId)}, {$set: postAtualizado});
 }
