@@ -11,6 +11,6 @@ link do deploy no Google Cloud: https://alura-backend-267114827872.southamerica-
           "alt": "teste texto alternativo"  
      }  
 3. Para fazer upload de uma imagem: utilizar método POST na url "https://alura-backend-267114827872.southamerica-east1.run.app/upload" e inserir conteúdo no body com tipo form-data. Segue imagem de exemplo abaixo:  
-
-
 ![upload](https://github.com/user-attachments/assets/9074b211-06b6-4f86-ba5e-9a2c4f9126d6)
+Copiar o ID do response para poder editar a descrição e a url da imagem.
+4. Para editar a imagem que acabou de ser realizado o upload, utilizar o método PUT no endpoint https://alura-backend-267114827872.southamerica-east1.run.app/upload/<id gerado com o upload da imagem>
