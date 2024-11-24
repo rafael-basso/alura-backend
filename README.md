@@ -16,6 +16,7 @@ Copiar o ID do response para poder editar a descrição e a url da imagem.
 4. Para editar o conteúdo da imagem que acabou de ser realizado o upload, utilizar o método PUT no seguinte endpoint:<br>https://alura-backend-267114827872.southamerica-east1.run.app/upload/<"id gerado com o upload da imagem">.<br>No body inserir o seguinte JSON:  
 {  
     "alt": "url da img alterada"  
-}  
+} 
+O valor do campo "description" será inserido automaticamente segundo prompt de retorno realizado pelo Google Gemini. O valor do campo "imgUrl" será atualizado para a url do projeto.    
 5. Para deletar um objeto/conteúdo, utilizar o método DELETE no seguinte endpoint:<br>https://alura-backend-267114827872.southamerica-east1.run.app/api/<"inserir ID no objeto a ser deletado">
 
