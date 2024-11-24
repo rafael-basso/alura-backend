@@ -10,6 +10,7 @@ link do deploy no Google Cloud: https://alura-backend-267114827872.southamerica-
           "imgUrl": https://placecats.com/300/400",  
           "alt": "teste texto alternativo"  
      }  
-3. Para fazer upload de uma imagem: utilizar método POST na url "https://alura-backend-267114827872.southamerica-east1.run.app/upload" e inserir conteúdo no body com tipo form-data.Segue imagem de exemplo abaixo:  
-![Logo](https://1drv.ms/i/c/189990955024fccb/Ecs-YwfkvOVNjEyjIzP4JjgB96Rsv6rVGdGSbhW4qI4A2w?e=c1M25L)
+3. Para fazer upload de uma imagem: utilizar método POST na url "https://alura-backend-267114827872.southamerica-east1.run.app/upload" e inserir conteúdo no body com tipo form-data. Segue imagem de exemplo abaixo:  
 
+
+![upload](https://github.com/user-attachments/assets/9074b211-06b6-4f86-ba5e-9a2c4f9126d6)
